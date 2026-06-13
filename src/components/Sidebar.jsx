@@ -15,6 +15,7 @@ import {
   FileSpreadsheet,
   Award,
   MessagesSquare,
+  Mail,
 } from "lucide-react";
 
 export const Sidebar = ({ currentTab, setCurrentTab, role, onLogout, currentParent }) => {
