@@ -17,7 +17,7 @@ import {
   MessagesSquare,
 } from "lucide-react";
 
-export const Sidebar = ({ currentTab, setCurrentTab, role, onLogout }) => {
+export const Sidebar = ({ currentTab, setCurrentTab, role, onLogout, currentParent }) => {
   // Menu definitions for Admin View
   const adminMenuItems = [
     { id: "dashboard", name: "Dashboard", icon: LayoutDashboard },
@@ -44,7 +44,36 @@ export const Sidebar = ({ currentTab, setCurrentTab, role, onLogout }) => {
     { id: "settings", name: "Settings", icon: Settings },
   ];
 
-  const activeMenuItems = role === "Admin" ? adminMenuItems : teacherMenuItems;
+  // Menu definitions for Parent View
+  const parentMenuItems = [
+    { id: "dashboard", name: "Dashboard", icon: LayoutDashboard },
+    { id: "attendance", name: "Attendance Calendar", icon: CalendarDays },
+    { id: "contact", name: "Contact Advisor", icon: Mail },
+  ];
+
+  const activeMenuItems =
+    role === "Admin"
+      ? adminMenuItems
+      : role === "Teacher"
+        ? teacherMenuItems
+        : parentMenuItems;
+
+  const getFooterProfile = () => {
+    if (role === "Parent" && currentParent) {
+      return {
+        name: currentParent.name,
+        roleText: `Parent (${currentParent.studentName})`,
+        avatar: currentParent.avatar || "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150"
+      };
+    }
+    return {
+      name: "Sarah Johnson",
+      roleText: role === "Admin" ? "Super Admin" : "Math Teacher",
+      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150"
+    };
+  };
+
+  const footerProfile = getFooterProfile();
 
   return (
     <aside className="sidebar">
@@ -70,13 +99,17 @@ export const Sidebar = ({ currentTab, setCurrentTab, role, onLogout }) => {
           letterSpacing: "0.2px",
         }}
       >
-        {role === "Admin" ? "Admin Portal" : "Teacher Portal"}
+        {role === "Admin"
+          ? "Admin Portal"
+          : role === "Teacher"
+            ? "Teacher Portal"
+            : "Parent Portal"}
       </div>
 
       <nav className="nav-links">
         {activeMenuItems.map((item) => {
           const Icon = item.icon;
-          const isActive = currentTab === item.id;
+          const isActive = currentTab === item.id || (item.id === "dashboard" && currentTab === "overview");
           return (
             <div
               key={item.id}
@@ -93,16 +126,14 @@ export const Sidebar = ({ currentTab, setCurrentTab, role, onLogout }) => {
       <div className="sidebar-footer">
         <div className="user-profile-summary">
           <img
-            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150"
-            alt="Sarah Johnson avatar"
+            src={footerProfile.avatar}
+            alt={`${footerProfile.name} avatar`}
             className="user-avatar"
           />
 
           <div className="user-info">
-            <span className="user-name">Sarah Johnson</span>
-            <span className="user-role">
-              {role === "Admin" ? "Super Admin" : "Math Teacher"}
-            </span>
+            <span className="user-name">{footerProfile.name}</span>
+            <span className="user-role">{footerProfile.roleText}</span>
           </div>
         </div>
         <button className="logout-btn" onClick={onLogout}>

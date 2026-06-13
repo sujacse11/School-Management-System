@@ -8,6 +8,7 @@ export const Header = ({
   notificationsCount,
   onNotificationsClick,
   currentTab,
+  currentParent,
 }) => {
   const getPlaceholder = (tab) => {
     switch (tab) {
@@ -43,6 +44,23 @@ export const Header = ({
     }
   };
 
+  const getProfile = () => {
+    if (role === "Parent" && currentParent) {
+      return {
+        name: currentParent.name,
+        roleText: `Parent (${currentParent.studentName})`,
+        avatar: currentParent.avatar || "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150"
+      };
+    }
+    return {
+      name: "Sarah Johnson",
+      roleText: role === "Admin" ? "Administrator" : "Teacher",
+      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150"
+    };
+  };
+
+  const profile = getProfile();
+
   return (
     <header className="top-header">
       <div className="search-container">
@@ -74,15 +92,15 @@ export const Header = ({
             style={{ alignItems: "flex-end", color: "var(--text-primary)" }}
           >
             <span style={{ fontSize: "14px", fontWeight: 600 }}>
-              Sarah Johnson
+              {profile.name}
             </span>
             <span style={{ fontSize: "11px", color: "var(--text-secondary)" }}>
-              {role === "Admin" ? "Administrator" : "Teacher"}
+              {profile.roleText}
             </span>
           </div>
           <img
-            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150"
-            alt="Sarah Johnson profile"
+            src={profile.avatar}
+            alt={`${profile.name} profile`}
             style={{
               width: "40px",
               height: "40px",

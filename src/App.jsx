@@ -19,23 +19,259 @@ import { ExamsMarks } from "./pages/ExamsMarks";
 import { Messages } from "./pages/Messages";
 import { Settings } from "./pages/Settings";
 import { Approvals } from "./pages/Approvals";
+import { ParentDashboard } from "./pages/ParentDashboard";
 
 // ================= INITIAL MOCK DATA =================
 const initialStudents = [
+  {
+    id: "STU-24001",
+    name: "Alex Johnson",
+    email: "alex.j@example.com",
+    phone: "8493208401",
+    dob: "2015-05-14",
+    grade: "Grade 5",
+    section: "A",
+    status: "Active",
+    joinedDate: "Oct 24, 2023",
+    parentName: "Michael Johnson",
+    parentPhone: "8503432890",
+    avatar: "https://images.unsplash.com/photo-1542186938-df9626455120?w=150",
+    subjects: {
+      math: { score: 92, grade: "A+", attendance: 95 },
+      science: { score: 88, grade: "A", attendance: 98 },
+      english: { score: 85, grade: "A-", attendance: 92 }
+    },
+    gpa: "3.8",
+    attendanceRate: "95%",
+    pendingAssignments: 2,
+    feeStatus: "Paid",
+    room: "105",
+    advisor: "Sarah Connor"
+  },
+  {
+    id: "STU-24002",
+    name: "Sarah Williams",
+    email: "sarah.w@example.com",
+    phone: "8493208402",
+    dob: "2014-03-22",
+    grade: "Grade 5",
+    section: "A",
+    status: "Active",
+    joinedDate: "Oct 11, 2023",
+    parentName: "Emma Williams",
+    parentPhone: "8503432891",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150",
+    subjects: {
+      math: { score: 95, grade: "A+", attendance: 98 },
+      science: { score: 94, grade: "A+", attendance: 97 },
+      english: { score: 90, grade: "A", attendance: 99 }
+    },
+    gpa: "3.9",
+    attendanceRate: "98%",
+    pendingAssignments: 1,
+    feeStatus: "Paid",
+    room: "105",
+    advisor: "Sarah Connor"
+  },
+  {
+    id: "STU-24003",
+    name: "David Chen",
+    email: "david.c@example.com",
+    phone: "8493208403",
+    dob: "2016-07-10",
+    grade: "Grade 5",
+    section: "A",
+    status: "Active",
+    joinedDate: "Oct 18, 2023",
+    parentName: "Robert Chen",
+    parentPhone: "8503432892",
+    avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150",
+    subjects: {
+      math: { score: 85, grade: "A-", attendance: 93 },
+      science: { score: 87, grade: "B+", attendance: 90 },
+      english: { score: 80, grade: "B", attendance: 92 }
+    },
+    gpa: "3.5",
+    attendanceRate: "92%",
+    pendingAssignments: 3,
+    feeStatus: "Unpaid",
+    room: "105",
+    advisor: "Sarah Connor"
+  },
+  {
+    id: "STU-24004",
+    name: "Maya Patel",
+    email: "maya.p@example.com",
+    phone: "8493208404",
+    dob: "2013-11-05",
+    grade: "Grade 5",
+    section: "A",
+    status: "Active",
+    joinedDate: "Oct 15, 2023",
+    parentName: "Sanjay Patel",
+    parentPhone: "8503432893",
+    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150",
+    subjects: {
+      math: { score: 89, grade: "A-", attendance: 95 },
+      science: { score: 91, grade: "A", attendance: 94 },
+      english: { score: 86, grade: "B+", attendance: 93 }
+    },
+    gpa: "3.7",
+    attendanceRate: "94%",
+    pendingAssignments: 2,
+    feeStatus: "Paid",
+    room: "105",
+    advisor: "Sarah Connor"
+  },
+  {
+    id: "STU-24005",
+    name: "Lucas Silva",
+    email: "lucas.s@example.com",
+    phone: "8493208405",
+    dob: "2015-12-19",
+    grade: "Grade 5",
+    section: "A",
+    status: "Active",
+    joinedDate: "Oct 10, 2023",
+    parentName: "Maria Silva",
+    parentPhone: "8503432894",
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150",
+    subjects: {
+      math: { score: 80, grade: "B", attendance: 89 },
+      science: { score: 82, grade: "B", attendance: 91 },
+      english: { score: 78, grade: "C+", attendance: 90 }
+    },
+    gpa: "3.4",
+    attendanceRate: "90%",
+    pendingAssignments: 4,
+    feeStatus: "Unpaid",
+    room: "105",
+    advisor: "Sarah Connor"
+  },
+  {
+    id: "STU-24006",
+    name: "Amina Okafor",
+    email: "amina.o@example.com",
+    phone: "8493208406",
+    dob: "2014-08-30",
+    grade: "Grade 5",
+    section: "A",
+    status: "Active",
+    joinedDate: "Oct 08, 2023",
+    parentName: "Chinedu Okafor",
+    parentPhone: "8503432895",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
+    subjects: {
+      math: { score: 98, grade: "A+", attendance: 100 },
+      science: { score: 99, grade: "A+", attendance: 100 },
+      english: { score: 96, grade: "A+", attendance: 100 }
+    },
+    gpa: "4.0",
+    attendanceRate: "100%",
+    pendingAssignments: 0,
+    feeStatus: "Paid",
+    room: "105",
+    advisor: "Sarah Connor"
+  },
+  {
+    id: "STU-24007",
+    name: "Omar Hassan",
+    email: "omar.h@example.com",
+    phone: "8493208407",
+    dob: "2012-01-25",
+    grade: "Grade 5",
+    section: "A",
+    status: "Active",
+    joinedDate: "Oct 06, 2023",
+    parentName: "Layla Hassan",
+    parentPhone: "8503432896",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+    subjects: {
+      math: { score: 86, grade: "B+", attendance: 92 },
+      science: { score: 89, grade: "A-", attendance: 95 },
+      english: { score: 83, grade: "B", attendance: 92 }
+    },
+    gpa: "3.6",
+    attendanceRate: "93%",
+    pendingAssignments: 3,
+    feeStatus: "Paid",
+    room: "105",
+    advisor: "Sarah Connor"
+  },
+  {
+    id: "STU-24008",
+    name: "Yuki Tanaka",
+    email: "yuki.t@example.com",
+    phone: "8493208408",
+    dob: "2013-09-03",
+    grade: "Grade 5",
+    section: "A",
+    status: "Active",
+    joinedDate: "Oct 04, 2023",
+    parentName: "Ken Tanaka",
+    parentPhone: "8503432897",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
+    subjects: {
+      math: { score: 94, grade: "A+", attendance: 98 },
+      science: { score: 95, grade: "A+", attendance: 96 },
+      english: { score: 91, grade: "A", attendance: 97 }
+    },
+    gpa: "3.9",
+    attendanceRate: "97%",
+    pendingAssignments: 1,
+    feeStatus: "Paid",
+    room: "105",
+    advisor: "Sarah Connor"
+  },
+  {
+    id: "STU-24009",
+    name: "Noah Alischer",
+    email: "noah.a@example.com",
+    phone: "8493208409",
+    dob: "2015-02-14",
+    grade: "Grade 5",
+    section: "A",
+    status: "Active",
+    joinedDate: "Oct 02, 2023",
+    parentName: "Hannah Alischer",
+    parentPhone: "8503432898",
+    avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150",
+    subjects: {
+      math: { score: 76, grade: "C", attendance: 86 },
+      science: { score: 80, grade: "B-", attendance: 88 },
+      english: { score: 74, grade: "C", attendance: 90 }
+    },
+    gpa: "3.3",
+    attendanceRate: "88%",
+    pendingAssignments: 5,
+    feeStatus: "Unpaid",
+    room: "105",
+    advisor: "Sarah Connor"
+  },
   {
     id: "STU-24010",
     name: "Billy Vance",
     email: "billy.v@example.com",
     phone: "8493208410",
     dob: "2019-05-12",
-    grade: "Grade 1",
+    grade: "Grade 5",
     section: "A",
     status: "Active",
     joinedDate: "Sep 01, 2025",
     parentName: "James Vance",
     parentPhone: "8503432810",
-    avatar:
-      "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=150",
+    avatar: "https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=150",
+    subjects: {
+      math: { score: 91, grade: "A", attendance: 96 },
+      science: { score: 90, grade: "A", attendance: 95 },
+      english: { score: 88, grade: "A-", attendance: 97 }
+    },
+    gpa: "3.8",
+    attendanceRate: "96%",
+    pendingAssignments: 2,
+    feeStatus: "Paid",
+    room: "105",
+    advisor: "Sarah Connor"
   },
   {
     id: "STU-24011",
@@ -63,8 +299,7 @@ const initialStudents = [
     joinedDate: "Sep 02, 2024",
     parentName: "Alice Miller",
     parentPhone: "8503432812",
-    avatar:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150",
+    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150",
   },
   {
     id: "STU-24013",
@@ -78,8 +313,7 @@ const initialStudents = [
     joinedDate: "Sep 05, 2024",
     parentName: "John Turner",
     parentPhone: "8503432813",
-    avatar:
-      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150",
+    avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150",
   },
   {
     id: "STU-24014",
@@ -93,142 +327,7 @@ const initialStudents = [
     joinedDate: "Sep 01, 2023",
     parentName: "Carlos Martinez",
     parentPhone: "8503432814",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
-  },
-  {
-    id: "STU-24003",
-    name: "David Chen",
-    email: "david.c@example.com",
-    phone: "8493208403",
-    dob: "2016-07-10",
-    grade: "Grade 4",
-    section: "A",
-    status: "Active",
-    joinedDate: "Oct 18, 2023",
-    parentName: "Robert Chen",
-    parentPhone: "8503432892",
-    avatar:
-      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150",
-  },
-  {
-    id: "STU-24001",
-    name: "Alex Johnson",
-    email: "alex.j@example.com",
-    phone: "8493208401",
-    dob: "2015-05-14",
-    grade: "Grade 5",
-    section: "A",
-    status: "Active",
-    joinedDate: "Oct 24, 2023",
-    parentName: "Michael Johnson",
-    parentPhone: "8503432890",
-    avatar: "https://images.unsplash.com/photo-1542186938-df9626455120?w=150",
-  },
-  {
-    id: "STU-24005",
-    name: "Lucas Silva",
-    email: "lucas.s@example.com",
-    phone: "8493208405",
-    dob: "2015-12-19",
-    grade: "Grade 5",
-    section: "A",
-    status: "Active",
-    joinedDate: "Oct 10, 2023",
-    parentName: "Maria Silva",
-    parentPhone: "8503432894",
-    avatar:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150",
-  },
-  {
-    id: "STU-24009",
-    name: "Noah Alischer",
-    email: "noah.a@example.com",
-    phone: "8493208409",
-    dob: "2015-02-14",
-    grade: "Grade 5",
-    section: "B",
-    status: "Active",
-    joinedDate: "Oct 02, 2023",
-    parentName: "Hannah Alischer",
-    parentPhone: "8503432898",
-    avatar:
-      "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150",
-  },
-  {
-    id: "STU-24002",
-    name: "Sarah Williams",
-    email: "sarah.w@example.com",
-    phone: "8493208402",
-    dob: "2014-03-22",
-    grade: "Grade 6",
-    section: "B",
-    status: "Inactive",
-    joinedDate: "Oct 11, 2023",
-    parentName: "Emma Williams",
-    parentPhone: "8503432891",
-    avatar:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150",
-  },
-  {
-    id: "STU-24006",
-    name: "Amina Okafor",
-    email: "amina.o@example.com",
-    phone: "8493208406",
-    dob: "2014-08-30",
-    grade: "Grade 6",
-    section: "A",
-    status: "Active",
-    joinedDate: "Oct 08, 2023",
-    parentName: "Chinedu Okafor",
-    parentPhone: "8503432895",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
-  },
-  {
-    id: "STU-24004",
-    name: "Maya Patel",
-    email: "maya.p@example.com",
-    phone: "8493208404",
-    dob: "2013-11-05",
-    grade: "Grade 7",
-    section: "C",
-    status: "Active",
-    joinedDate: "Oct 15, 2023",
-    parentName: "Sanjay Patel",
-    parentPhone: "8503432893",
-    avatar:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150",
-  },
-  {
-    id: "STU-24008",
-    name: "Yuki Tanaka",
-    email: "yuki.t@example.com",
-    phone: "8493208408",
-    dob: "2013-09-03",
-    grade: "Grade 7",
-    section: "A",
-    status: "Inactive",
-    joinedDate: "Oct 04, 2023",
-    parentName: "Ken Tanaka",
-    parentPhone: "8503432897",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
-  },
-  {
-    id: "STU-24007",
-    name: "Omar Hassan",
-    email: "omar.h@example.com",
-    phone: "8493208407",
-    dob: "2012-01-25",
-    grade: "Grade 8",
-    section: "B",
-    status: "Active",
-    joinedDate: "Oct 06, 2023",
-    parentName: "Layla Hassan",
-    parentPhone: "8503432896",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
   },
   {
     id: "STU-24015",
@@ -242,8 +341,7 @@ const initialStudents = [
     joinedDate: "Sep 01, 2021",
     parentName: "Mary Hopper",
     parentPhone: "8503432815",
-    avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
   },
   {
     id: "STU-24016",
@@ -257,8 +355,7 @@ const initialStudents = [
     joinedDate: "Sep 01, 2021",
     parentName: "Sarah Turing",
     parentPhone: "8503432816",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
   },
   {
     id: "STU-24017",
@@ -272,8 +369,7 @@ const initialStudents = [
     joinedDate: "Sep 01, 2020",
     parentName: "Richard Watson",
     parentPhone: "8503432817",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
   },
   {
     id: "STU-24018",
@@ -287,8 +383,7 @@ const initialStudents = [
     joinedDate: "Sep 02, 2020",
     parentName: "George Garcia",
     parentPhone: "8503432818",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
   },
   {
     id: "STU-24019",
@@ -302,8 +397,7 @@ const initialStudents = [
     joinedDate: "Sep 01, 2020",
     parentName: "Helen Chen",
     parentPhone: "8503432819",
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150",
   },
   {
     id: "STU-24020",
@@ -317,8 +411,7 @@ const initialStudents = [
     joinedDate: "Sep 01, 2020",
     parentName: "John Smith",
     parentPhone: "8503432820",
-    avatar:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150",
+    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150",
   },
 ];
 
@@ -464,8 +557,7 @@ const initialParents = [
     studentName: "Alex Johnson",
     studentId: "STU-24001",
     relation: "Father",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
   },
   {
     id: "PAR-24002",
@@ -485,83 +577,77 @@ const initialParents = [
     studentName: "David Chen",
     studentId: "STU-24003",
     relation: "Father",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
   },
   {
     id: "PAR-24004",
+    name: "Sanjay Patel",
+    email: "sanjay.p@example.com",
+    phone: "8503432893",
+    studentName: "Maya Patel",
+    studentId: "STU-24004",
+    relation: "Father",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
+  },
+  {
+    id: "PAR-24005",
+    name: "Maria Silva",
+    email: "maria.s@example.com",
+    phone: "8503432894",
+    studentName: "Lucas Silva",
+    studentId: "STU-24005",
+    relation: "Mother",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
+  },
+  {
+    id: "PAR-24006",
+    name: "Chinedu Okafor",
+    email: "chinedu.o@example.com",
+    phone: "8503432895",
+    studentName: "Amina Okafor",
+    studentId: "STU-24006",
+    relation: "Father",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+  },
+  {
+    id: "PAR-24007",
+    name: "Layla Hassan",
+    email: "layla.h@example.com",
+    phone: "8503432896",
+    studentName: "Omar Hassan",
+    studentId: "STU-24007",
+    relation: "Mother",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
+  },
+  {
+    id: "PAR-24008",
+    name: "Ken Tanaka",
+    email: "ken.t@example.com",
+    phone: "8503432897",
+    studentName: "Yuki Tanaka",
+    studentId: "STU-24008",
+    relation: "Father",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
+  },
+  {
+    id: "PAR-24009",
+    name: "Hannah Alischer",
+    email: "hannah.a@example.com",
+    phone: "8503432898",
+    studentName: "Noah Alischer",
+    studentId: "STU-24009",
+    relation: "Mother",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
+  },
+  {
+    id: "PAR-24010",
     name: "James Vance",
     email: "james.v@example.com",
     phone: "8503432810",
     studentName: "Billy Vance",
     studentId: "STU-24010",
     relation: "Father",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
-  },
-  {
-    id: "PAR-24005",
-    name: "Mark Evans",
-    email: "mark.e@example.com",
-    phone: "8503432811",
-    studentName: "Lily Evans",
-    studentId: "STU-24011",
-    relation: "Father",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
-  },
-  {
-    id: "PAR-24006",
-    name: "Alice Miller",
-    email: "alice.m@example.com",
-    phone: "8503432812",
-    studentName: "Danny Miller",
-    studentId: "STU-24012",
-    relation: "Mother",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
-  },
-  {
-    id: "PAR-24007",
-    name: "John Turner",
-    email: "john.t@example.com",
-    phone: "8503432813",
-    studentName: "Sophie Turner",
-    studentId: "STU-24013",
-    relation: "Father",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
-  },
-  {
-    id: "PAR-24008",
-    name: "Carlos Martinez",
-    email: "carlos.m@example.com",
-    phone: "8503432814",
-    studentName: "Leo Martinez",
-    studentId: "STU-24014",
-    relation: "Father",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
-  },
-  {
-    id: "PAR-24009",
-    name: "Mary Hopper",
-    email: "mary.h@example.com",
-    phone: "8503432815",
-    studentName: "Grace Hopper",
-    studentId: "STU-24015",
-    relation: "Mother",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
-  },
-  {
-    id: "PAR-24010",
-    name: "Richard Watson",
-    email: "richard.w@example.com",
-    phone: "8503432817",
-    studentName: "Emma Watson",
-    studentId: "STU-24017",
-    relation: "Father",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
   },
 ];
 
@@ -1957,7 +2043,7 @@ const initialStaffAttendance = [
 
 export default function App() {
   // Check dataset version and reset if outdated
-  const CURRENT_DB_VERSION = "edu_dataset_version_v5";
+  const CURRENT_DB_VERSION = "edu_dataset_version_v6";
   if (localStorage.getItem(CURRENT_DB_VERSION) !== "true") {
     localStorage.removeItem("edu_students");
     localStorage.removeItem("edu_staff");
@@ -1977,6 +2063,7 @@ export default function App() {
     localStorage.removeItem("edu_timetable");
     localStorage.removeItem("edu_exams");
     localStorage.removeItem("edu_staff_attendance");
+    localStorage.removeItem("edu_current_parent");
     localStorage.setItem(CURRENT_DB_VERSION, "true");
   }
   const [role, setRole] = useState("Admin");
@@ -1991,15 +2078,23 @@ export default function App() {
   const [loginError, setLoginError] = useState("");
   const [loginSuccessToast, setLoginSuccessToast] = useState("");
 
+  const [currentParent, setCurrentParent] = useState(() => {
+    const val = localStorage.getItem("edu_current_parent");
+    return val ? JSON.parse(val) : null;
+  });
+
   const handleRoleToggle = (newRole) => {
     setRole(newRole);
     setLoginError("");
     if (newRole === "Admin") {
       setLoginEmail("admin@careerwave.com");
       setLoginPassword("admin123");
-    } else {
+    } else if (newRole === "Teacher") {
       setLoginEmail("teacher@careerwave.com");
       setLoginPassword("teacher123");
+    } else if (newRole === "Parent") {
+      setLoginEmail("michael.j@example.com");
+      setLoginPassword("parent123");
     }
   };
 
@@ -2024,7 +2119,7 @@ export default function App() {
           "Invalid Admin credentials. Try admin@careerwave.com / admin123",
         );
       }
-    } else {
+    } else if (role === "Teacher") {
       if (
         (normalizedEmail === "teacher@careerwave.com" ||
           normalizedEmail === "teacher@edusmart.com" ||
@@ -2037,6 +2132,19 @@ export default function App() {
       } else {
         setLoginError(
           "Invalid Teacher credentials. Try teacher@careerwave.com / teacher123",
+        );
+      }
+    } else if (role === "Parent") {
+      const parentObj = parents.find(
+        (p) => p.email.toLowerCase() === normalizedEmail
+      );
+      if (parentObj && normalizedPassword === "parent123") {
+        setCurrentParent(parentObj);
+        setIsLoggedIn(true);
+        setLoginSuccessToast("");
+      } else {
+        setLoginError(
+          "Invalid Parent credentials. Try michael.j@example.com / parent123",
         );
       }
     }
@@ -2234,6 +2342,14 @@ export default function App() {
     localStorage.setItem("edu_integrations", JSON.stringify(integrations));
   }, [integrations]);
 
+  useEffect(() => {
+    if (currentParent) {
+      localStorage.setItem("edu_current_parent", JSON.stringify(currentParent));
+    } else {
+      localStorage.removeItem("edu_current_parent");
+    }
+  }, [currentParent]);
+
   // Handle Approve/Reject callback from Dashboard or Approvals Tab
   const handleApprove = (id, approve) => {
     setApprovals((prev) =>
@@ -2362,7 +2478,7 @@ export default function App() {
             />
           );
       }
-    } else {
+    } else if (role === "Teacher") {
       // Teacher View
       switch (currentTab) {
         case "dashboard":
@@ -2458,6 +2574,15 @@ export default function App() {
             />
           );
       }
+    } else if (role === "Parent") {
+      return (
+        <ParentDashboard
+          parent={currentParent}
+          students={students}
+          currentTab={currentTab}
+          setCurrentTab={setCurrentTab}
+        />
+      );
     }
   };
 
@@ -2558,6 +2683,13 @@ export default function App() {
             >
               Teacher
             </button>
+            <button
+              type="button"
+              className={`login-role-btn ${role === "Parent" ? "active" : "inactive"}`}
+              onClick={() => handleRoleToggle("Parent")}
+            >
+              Parent
+            </button>
           </div>
 
           <form onSubmit={handleLogin} className="login-form">
@@ -2627,6 +2759,17 @@ export default function App() {
                   teacher@careerwave.com / teacher123
                 </span>
               </div>
+              <div
+                className="login-demo-row"
+                onClick={() => {
+                  handleRoleToggle("Parent");
+                }}
+              >
+                <span className="login-demo-badge">Parent</span>
+                <span className="login-demo-info">
+                  michael.j@example.com / parent123
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -2642,6 +2785,7 @@ export default function App() {
         setCurrentTab={setCurrentTab}
         role={role}
         onLogout={handleLogout}
+        currentParent={currentParent}
       />
 
       {/* Main Wrapper */}
@@ -2653,6 +2797,7 @@ export default function App() {
           notificationsCount={notificationsCount}
           onNotificationsClick={handleNotificationsClick}
           currentTab={currentTab}
+          currentParent={currentParent}
         />
 
         {/* Scrollable Content Panel */}
